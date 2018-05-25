@@ -3,6 +3,7 @@ canvas {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	background-color: rgba(210,234,243,0.3);
 	outline: dotted white;
+	z-index: 1;
 }
 
 h1,p {
@@ -25,4 +26,36 @@ h1 {
 @font-face {
     font-family: Thrones;
     src: url("Thrones.ttf") format("opentype");
+}
+
+button {
+	z-index: 100;
+	font-size: 30px;
+	position: relative;
+	top: -270px;
+	left: -300px;
+	text-shadow: 2px 2px black;
+	background-color: #3FC3ED;
+	border-radius: 4px;
+	border: 1px solid white;
+	color : white;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	font-family: "Thrones", garamond, serif;
+	padding-right: 15px;
+	text-align: center;
+	
+
+}
+
+button:hover {
+	text-shadow: 2px 2px black;
+	color: #3FC3ED;
+	background-color: black;
+}
+
+
+.hide {
+	visibility: hidden;
 }

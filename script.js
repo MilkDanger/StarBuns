@@ -13,9 +13,10 @@ function start() {
 	button.setAttribute("class", "hide");
 	ctx.drawImage(bun, x, y);
 	
-	document.addEventListener('keypress', function() {
+	document.addEventListener('keypress', evt => {
 		//bun.setAttribute("class", "hide");
-		ctx.clearRectangle(x, y, 40, 40);
+		console.log(evt);
+		ctx.clearRect(x, y, 40, 40);
 		x += 100;
 		y += 100;
 		ctx.drawImage(bun, x, y);

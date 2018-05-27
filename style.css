@@ -25,17 +25,30 @@ canvas {
 	top: 10px;
 	left: 225px;
 }
+ 
+audio {
+	position: relative;
+	top: -495px;
+}
 
-h1,p {
-	font-size: 30px;
-	font-family: "Thrones", garamond, serif;
+h1,h2,p {
+	font-size: 100px;
+	font-family: "Billy", garamond, serif;
 	color: white;
 	text-shadow: 2px 2px black;
 }
 
-h1 {
-	font-size: 100px;
-	font-family: "Billy", garamond, serif;
+h2,p {
+	font-size: 30px;
+}
+
+h2 {
+	position: relative;
+	top: -525px;
+}
+
+p {
+	font-family: "Thrones", garamond, serif;
 }
 
 @font-face {
@@ -60,7 +73,6 @@ button {
 	color : white;
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	font-family: "Thrones", garamond, serif;
 	padding-right: 15px;
 	text-align: center;

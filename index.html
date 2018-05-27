@@ -13,11 +13,14 @@
 				wanders the universe on a divine journey. 
 				Using </br>the almighty power of fusion, she collects
 				particles in order to create new </br>elements and 
-				amalgams of matter. Use your arrow keys to fly.
+				amalgams of matter. Use your AWSD keys to fly.
 			</p>
 			<canvas id="canny" width="500" height="500"></canvas>
 			<button onclick="start()" type="button" id="startButton">start</button>
-			
+			<button onclick="openMenu()" type="button" id="menuButton" class="hide">build</button>
+			<div id="menu" class="hide">
+				<button onclick="closeMenu()" type="button" id="closeButton">x</button>
+			</div>
 		</center>
 		<script type="text/javascript" src="script.js"></script>
 	</body>

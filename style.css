@@ -1,9 +1,29 @@
 canvas {
-	border: 10px inset #abcdef;
+	border: 10px ridge #abcdef;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	background-color: rgba(210,234,243,0.3);
 	outline: dotted white;
-	z-index: 1;
+}
+
+#menu {
+	width: 500px;
+	height: 500px;
+	background-color: rgb(210,234,243);
+	top: -521px;
+	left: -75px;
+	position: relative;
+}
+
+#menuButton {
+	position: relative;
+	top: -25px;
+	left: -165px;
+}
+
+#closeButton {
+	position: relative;
+	top: 10px;
+	left: 225px;
 }
 
 h1,p {
@@ -29,7 +49,6 @@ h1 {
 }
 
 button {
-	z-index: 100;
 	font-size: 30px;
 	position: relative;
 	top: -270px;
@@ -45,8 +64,6 @@ button {
 	font-family: "Thrones", garamond, serif;
 	padding-right: 15px;
 	text-align: center;
-	
-
 }
 
 button:hover {

@@ -7,9 +7,9 @@ const menu = document.getElementById("menu");
 let x = 50;
 let y = 50;
 let bun = document.createElement("IMG");
-bun.setAttribute("src", "bun1.png");
-bun.setAttribute("width", 600);
-bun.setAttribute("height", 600);
+bun.setAttribute("src", "bun.png");
+//bun.setAttribute("width", 600);
+//bun.setAttribute("height", 600);
 
 function start() {
 	button.setAttribute("class", "hide");
@@ -47,5 +47,16 @@ function openMenu() {
 function closeMenu() {
 	menu.setAttribute("class", "hide");
 	menuButton.setAttribute("class", "");
+	let boo = particle("e.png");
+	ctx.drawImage(boo, 50, 50);
+}
+
+
+
+/* new particles */
+
+function particle(file) {
+	let img = document.createElement("IMG");
+	img.setAttribute("src", file);
 
 }

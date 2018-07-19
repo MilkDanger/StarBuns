@@ -3,32 +3,38 @@ canvas {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	background-color: rgba(210,234,243,0.3);
 	outline: dotted white;
+	width: 500px;
+	height: 500px;
+
 }
 
 #menu {
-	width: 500px;
-	height: 500px;
+/*	width: 500px;
+	height: 500px; */
+	width: inherit;
+	height: inherit;
 	background-color: rgb(210,234,243);
-	top: -521px;
-	left: -75px;
+/*	top: -521px;
+	left: -75px; */
 	position: relative;
 }
 
 #menuButton {
 	position: relative;
-	top: -25px;
-	left: -165px;
+	margin: 0 auto;
+/*	top: -25px;
+	left: -165px; */
 }
 
 #closeButton {
 	position: relative;
-	top: 10px;
-	left: 225px;
+/*	top: 10px;
+	left: 225px; */
 }
  
 audio {
 	position: relative;
-	top: -495px;
+/*	top: -495px; */
 }
 
 h1,h2,p {
@@ -44,7 +50,7 @@ h2,p {
 
 h2 {
 	position: relative;
-	top: -525px;
+/*	top: -525px; */
 }
 
 p {
@@ -63,9 +69,9 @@ p {
 
 button {
 	font-size: 30px;
-	position: relative;
-	top: -270px;
-	left: -300px;
+	position: absolute;
+/*	top: -270px;
+	left: -300px; */
 	text-shadow: 2px 2px black;
 	background-color: #3FC3ED;
 	border-radius: 4px;
@@ -76,6 +82,8 @@ button {
 	font-family: "Thrones", garamond, serif;
 	padding-right: 15px;
 	text-align: center;
+	margin: 0 auto;
+	height: auto;
 }
 
 button:hover {

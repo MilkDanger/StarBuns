@@ -3,7 +3,7 @@ let ctx = canny.getContext('2d');
 const button = document.getElementById("startButton");
 const menuButton = document.getElementById("menuButton");
 const menu = document.getElementById("menu");
-
+const numParticles = 10;
 window.requestAnimationFrame = window.requestAnimationFrame
                                || window.mozRequestAnimationFrame
                                || window.webkitRequestAnimationFrame
@@ -108,15 +108,17 @@ function Particle () {
 }
 
 let particles = [];
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < numParticles; i++) {
 	particles.push(new Particle());
 }
 
 let requestFrame;
 function run(timestamp) {
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < numParticles; i++) {
 		particles[i].update();
 	}
+	detectAnnihilation();
+	detectCollection();
 	ctx.drawImage(bun, x, y);
 	requestFrame = requestAnimationFrame(run);
 }
@@ -137,3 +139,32 @@ let mNum = 0;
 let sNum = 0;
 let siNum = 0;
 
+/* annihilation */
+function detectAnnihilation() {
+	console.log(particles);
+	for (let i = 0; i < numParticles; i++) {
+		for (let j = 0; j < numParticles; j++) {
+			if (i !== j) {
+				if ((particles[i].type === 0 && 
+					particles[j].type === 1) || 
+					(particles[i].type === 1 && 
+						particles[j].type === 0) || 
+					(particles[i].type === 2 && 
+						particles[j].type === 3) || 
+					(particles[i].type === 3 && 
+						particles[j].type === 2) || 
+					(particles[i].type === 4 && 
+						particles[j].type === 5) || 
+					(particles[i].type === 5 && 
+						particles[j].type === 4)) {
+					delete particles[i];
+					delete particles[j];
+				}
+			}
+		}
+	}
+}
+
+function detectCollection() {
+	console.log("moo");
+}

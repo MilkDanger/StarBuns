@@ -5,36 +5,30 @@ canvas {
 	outline: dotted white;
 	width: 500px;
 	height: 500px;
-
 }
 
 #menu {
-/*	width: 500px;
-	height: 500px; */
-	width: inherit;
-	height: inherit;
-	background-color: rgb(210,234,243);
-/*	top: -521px;
-	left: -75px; */
+	width: 500px;
+	height: 500px; 
+	background-color: rgba(0,0,0,0.9);
+	top: -550px;
 	position: relative;
 }
 
 #menuButton {
-	position: relative;
 	margin: 0 auto;
-/*	top: -25px;
-	left: -165px; */
+	top: -60px;
+	left: 170px; 
 }
 
 #closeButton {
-	position: relative;
-/*	top: 10px;
-	left: 225px; */
+	top: 5px;
+	left: 225px; 
 }
  
-audio {
+audio, h2 {
 	position: relative;
-/*	top: -495px; */
+	top: -500px; 
 }
 
 h1,h2,p {
@@ -46,11 +40,6 @@ h1,h2,p {
 
 h2,p {
 	font-size: 30px;
-}
-
-h2 {
-	position: relative;
-/*	top: -525px; */
 }
 
 p {
@@ -69,9 +58,9 @@ p {
 
 button {
 	font-size: 30px;
-	position: absolute;
-/*	top: -270px;
-	left: -300px; */
+	top: -300px;
+	left: 40px;
+   position: relative;	
 	text-shadow: 2px 2px black;
 	background-color: #3FC3ED;
 	border-radius: 4px;
@@ -95,4 +84,27 @@ button:hover {
 
 .hide {
 	visibility: hidden;
+}
+
+#e, #up, #down, #p, #n, #h, #he {
+	width: 100px;
+	height: 100px;
+	background-color: #3ED7FA;
+	border-radius: 5px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	position: relative;
+	top: -1170px;
+	left: 500px;
+	text-align: center;
+	font-size: 11px;
+	margin: 0px;
+}
+
+#up {
+	left: 620px;
+	top: -1080px;
+}
+
+#down {
+	left: 740px;
 }

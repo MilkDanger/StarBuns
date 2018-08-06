@@ -3,7 +3,8 @@ let ctx = canny.getContext('2d');
 const button = document.getElementById("startButton");
 const menuButton = document.getElementById("menuButton");
 const menu = document.getElementById("menu");
-const numParticles = 10;
+const tiles = document.getElementById("tiles"); 
+let numParticles = 30; //initial number to create but actual number will vary 
 window.requestAnimationFrame = window.requestAnimationFrame
                                || window.mozRequestAnimationFrame
                                || window.webkitRequestAnimationFrame
@@ -26,7 +27,6 @@ function start() {
 	ctx.drawImage(bun, x, y);
 	
 	document.addEventListener('keypress', evt => {
-		console.log(evt);
 		if (evt.key === "s") {
 			ctx.clearRect(x, y, 40, 40);
 			y += 10;
@@ -50,14 +50,14 @@ function start() {
 
 function openMenu() {
 	menu.setAttribute("class", "");
+	tiles.setAttribute("class", "");
 	menuButton.setAttribute("class", "hide");
 }
 
 function closeMenu() {
+	tiles.setAttribute("class", "hide");
 	menu.setAttribute("class", "hide");
 	menuButton.setAttribute("class", "");
-	let boo = particle("e.png");
-	ctx.drawImage(boo, 50, 50);
 }
 
 
@@ -79,7 +79,7 @@ antidown.src = 'antidown.png';
 function Particle () {
 	this.x = Math.floor(Math.random() * 500);
 	this.y = Math.floor(Math.random() * 500);  
-	this.type = Math.floor(Math.random() * 5);
+	this.type = Math.floor(Math.random() * 6);
 	if (this.type === 0) {
 		this.img = e;
 	} else if (this.type === 1) {
@@ -114,7 +114,7 @@ for (let i = 0; i < numParticles; i++) {
 
 let requestFrame;
 function run(timestamp) {
-	for (let i = 0; i < numParticles; i++) {
+	for (let i = 0; i < particles.length; i++) {
 		particles[i].update();
 	}
 	detectAnnihilation();
@@ -141,30 +141,67 @@ let siNum = 0;
 
 /* annihilation */
 function detectAnnihilation() {
-	console.log(particles);
-	for (let i = 0; i < numParticles; i++) {
-		for (let j = 0; j < numParticles; j++) {
-			if (i !== j) {
-				if ((particles[i].type === 0 && 
-					particles[j].type === 1) || 
-					(particles[i].type === 1 && 
-						particles[j].type === 0) || 
-					(particles[i].type === 2 && 
-						particles[j].type === 3) || 
-					(particles[i].type === 3 && 
-						particles[j].type === 2) || 
-					(particles[i].type === 4 && 
-						particles[j].type === 5) || 
-					(particles[i].type === 5 && 
-						particles[j].type === 4)) {
-					delete particles[i];
-					delete particles[j];
+	let toDelete = [];
+	for (let i = 0; i < particles.length; i++) {
+		for (let j = 0; j < particles.length; j++) {
+			if (Math.abs(particles[i].x - particles[j].x) < 10 && 
+			Math.abs(particles[i].y - particles[j].y) < 10) {
+				if (i !== j) {
+					if ((particles[i].type === 0 && 
+						particles[j].type === 1) || 
+						(particles[i].type === 1 && 
+							particles[j].type === 0) || 
+						(particles[i].type === 2 && 
+							particles[j].type === 3) || 
+						(particles[i].type === 3 && 
+							particles[j].type === 2) || 
+						(particles[i].type === 4 && 
+							particles[j].type === 5) || 
+						(particles[i].type === 5 && 
+							particles[j].type === 4)) {
+						toDelete.push(particles[i]);
+					}
 				}
 			}
-		}
+		}	
+	}
+	for (let i = 0; i < toDelete.length; i++) {
+			ctx.clearRect(toDelete[i].x, toDelete[i].y, 10, 10);
+			particles.splice(particles.indexOf(toDelete[i]),1);
 	}
 }
 
 function detectCollection() {
-	console.log("moo");
+	let toDelete = [];
+	for (let i = 0; i < particles.length; i++) {
+		if ((particles[i].x - x) < 20 && 
+			(particles[i].x - x) > 0 &&
+			(particles[i].y - y) < 20 &&
+			(particles[i].y - y) > 0) {
+			toDelete.push(particles[i]);
+		}
+	}
+	for (let i = 0; i < toDelete.length; i++) {
+		ctx.clearRect(toDelete[i].x, toDelete[i].y, 10, 10);
+		if (toDelete[i].type === 0) {
+			eNum++;
+			console.log("electron!"+ eNum);
+		} else if (toDelete[i].type === 1) {
+			eNum--;
+			console.log("positron!" + eNum);
+		} else if (toDelete[i].type === 2) {
+			upNum++;
+			console.log("up quark!"+upNum);
+		} else if (toDelete[i].type === 3) {
+			upNum--;
+			console.log("antiup!"+upNum);
+		} else if (toDelete[i].type === 4) {
+			downNum++;
+			console.log("down quark"+downNum);
+		} else {
+			downNum--;
+			console.log("antidown"+downNum);
+		}
+		particles.splice(particles.indexOf(toDelete[i]),1);
+	}
 }

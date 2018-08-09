@@ -1,4 +1,9 @@
+body {
+	cursor: url(cursor.png), default;
+}
+
 canvas {
+	cursor: url(cursor.png);
 	border: 10px ridge #abcdef;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	background-color: rgba(210,234,243,0.3);
@@ -25,7 +30,19 @@ canvas {
 	top: 5px;
 	left: 225px; 
 }
- 
+
+#tiles {
+	top: -1170px;
+	left: 450px;
+	position: relative;
+	display: inline-grid;
+	grid-gap: 5px;
+	grid-template-columns: auto auto auto auto;
+	width: 500px;
+	height: 485px;
+	overflow-y: scroll;
+}
+
 audio, h2 {
 	position: relative;
 	top: -500px; 
@@ -46,6 +63,11 @@ p {
 	font-family: "Thrones", garamond, serif;
 }
 
+h3, h4 {
+	margin: 0px;
+	padding: 0px;
+}
+
 @font-face {
     font-family: Billy;
     src: url("bf.ttf") format("opentype");
@@ -56,13 +78,18 @@ p {
     src: url("Thrones.ttf") format("opentype");
 }
 
+@font-face {
+	font-family: Mercy;
+	src: url("Mercy.ttf") format("opentype");
+}
+
 button {
 	font-size: 30px;
 	top: -300px;
 	left: 40px;
-   position: relative;	
+    position: relative;	
 	text-shadow: 2px 2px black;
-	background-color: #3FC3ED;
+	background-color: #57B3F6;
 	border-radius: 4px;
 	border: 1px solid white;
 	color : white;
@@ -73,38 +100,37 @@ button {
 	text-align: center;
 	margin: 0 auto;
 	height: auto;
+	z-index: 100;
 }
 
 button:hover {
 	text-shadow: 2px 2px black;
-	color: #3FC3ED;
+	color: #57B3F6;
 	background-color: black;
 }
-
 
 .hide {
 	visibility: hidden;
 }
 
-#e, #up, #down, #p, #n, #h, #he {
-	width: 100px;
-	height: 100px;
-	background-color: #3ED7FA;
+#e, #up, #down, #p, #n, #h, #he, #c, #o, #ni, #ph,
+#ne, #mg, #si, #s, #ar, #ca, #ti, #cr, #fe, #na {
+	width: 115px;
+	height: 115px;
+	background-color: #86E5F7;
 	border-radius: 5px;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	position: relative;
-	top: -1170px;
-	left: 500px;
 	text-align: center;
-	font-size: 11px;
-	margin: 0px;
+	font-size: 13px;
+	font-family: "Mercy", garamond, serif;
+	padding-top: 10px;
 }
 
-#up {
-	left: 620px;
-	top: -1080px;
+#e:hover, #up:hover, #down:hover, #p:hover, #n:hover, #h:hover, #he:hover,
+#c:hover, #o:hover, #ni:hover, #ph:hover, #ne:hover, #mg:hover, #si:hover,
+#s:hover, #ar:hover, #ca:hover, #ti:hover, #cr:hover, #fe:hover, #na:hover {
+	background-color: #D6F8FF;
+	color: #B4B4B4;
 }
 
-#down {
-	left: 740px;
-}

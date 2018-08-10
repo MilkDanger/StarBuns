@@ -8,8 +8,7 @@
 	<body background="stars.jpeg">
 		<center>
 			<h1>StarBun</h1>
-			<p>
-				The magical and fantastic StarBun 
+			<p>	The magical and fantastic StarBun 
 				wanders the universe on a divine journey. 
 				Using </br>the almighty power of fusion, she collects
 				particles in order to create new </br>elements and 
@@ -31,159 +30,138 @@
 		<div id="tiles" class="hide">
 			<div id="e">
 				<h3>Electron</h3>
-				<h4>count:</h4>
-				<h4 id="eNum"></h4>
+				<h3 id="eNum"></h3>
 				<h4>9.109 × 10^-31 kg</h4>
 				<h4>recipe: none</h4>
 			</div>
 			<div id="up">
 				<h3>Up Quark</h3>
-				<h4>count:</h4>
-				<h4 id="upNum"></h4>
+				<h3 id="upNum"></h3>
 				<h4>4.117 x 10^-30 kg</h4>
 				<h4>recipe: none</h4>
 			</div>
 			<div id="down">
 				<h3>Down Quark</h3>
-				<h4>count:</h4>
-				<h4 id="downNum"></h4>
+				<h3 id="downNum"></h3>
 				<h4>8.592 x 10^-30 kg</h4>
 				<h4>recipe: none</h4>
 			</div>
-			<div id="p">
+			<div id="p" onclick="buildp()">
 				<h3>Proton</h3>
-				<h4>count:</h4>
-				<h4 id="pNum"></h4>
+				<h3 id="pNum"></h3>
 				<h4>1.673 × 10⁻²⁷ kg</h4>
 				<h4>recipe: 2 up quark + down quark</h4>
 			</div>
-			<div id="n">
+			<div id="n" onclick="buildN()">
 				<h3>Neutron</h3>
-				<h4>count:</h4>
-				<h4 id="neuNum"></h4>
+				<h3 id="neuNum"></h3>
 				<h4>1.675 × 10^−27 kg</h4>
 				<h4>recipe: 2 down quark + up quark</h4>
 			</div>
-			<div id="h">
+			<div id="h" onclick="buildH()">
 				<h3>Hydrogen</h3>
-				<h4>count:</h4>
-				<h4 id="hNum"></h4>
+				<h3 id="hNum"></h3>
 				<h4>1.674 × 10^-27 kg</h4>
 				<h4>recipe: proton + electron</h4>
 			</div>
-			<div id="he">
+			<div id="he" onclick="buildHe()">
 				<h3>Helium</h3>
-				<h4>count:</h4>
-				<h4 id="heNum"></h4>
+				<h3 id="heNum"></h3>
 				<h4>6.646 × 10^-27 kg</h4>
 				<h4>recipe: 4 h -> 2 h + he</h4>
 			</div>
-			<div id="c">
+			<div id="c" onclick="buildC()">
 				<h3>Carbon</h3>
-				<h4>count:</h4>
-				<h4 id="cNum"></h4>
+				<h3 id="cNum"></h3>
 				<h4>1.994 × 10^-26 kg</h4>
-				<h4>recipe: 3 h -> c</h4>
+				<h4>recipe: 3 he -> c</h4>
 			</div>
-			<div id="o">
+			<div id="o" onclick="buildO()">
 				<h3>Oxygen</h3>
-				<h4>count:</h4>
-				<h4 id="oNum"></h4>
+				<h3 id="oNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: c + he -> o</h4>
 			</div>
-			<div id="ne">
+			<div id="ne" onclick="buildNe()">
 				<h3>Neon</h3>
-				<h4>count:</h4>
-				<h4 id="neNum"></h4>
+				<h3 id="neNum"></h3>
 				<h4>3.351 × 10^-26 kg</h4>
 				<h4>recipe: o + he -> ne / 
 					c + c -> ne + he</h4>
 			</div>	
-			<div id="na">
+			<div id="na" onclick="buildNa()">
 				<h3>Sodium</h3>
-				<h4>count:</h4>
-				<h4 id="naNum"></h4>
+				<h3 id="naNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: c + c -> na + h</h4>
 			</div>								
-			<div id="mg">
+			<div id="mg" onclick="buildMg()">
 				<h3>Magnesium</h3>
-				<h4>count:</h4>
-				<h4 id="mgNum"></h4>
+				<h3 id="mgNum"></h3>
 				<h4>4.036 × 10^-26 kg</h4>
 				<h4>recipe: ne + he -> mg / 
 					o + o -> mg + 2 he / 
 					c + c -> mg</h4>
 			</div>
-			<div id="si">
+			<div id="si" onclick="buildSi()">
 				<h3>Silicon</h3>
-				<h4>count:</h4>
-				<h4 id="siNum"></h4>
+				<h3 id="siNum"></h3>
 				<h4>4.664 × 10^-26 kg</h4>
 				<h4>recipe: mg + he -> si / 
 					c + o -> si</h4>
 			</div>
-			<div id="ph">
+			<div id="ph" onclick="buildPh()">
 				<h3>Phosphorus</h3>
-				<h4>count:</h4>
-				<h4 id="phNum"></h4>
+				<h3 id="phNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: o + o -> p + h</h4>
 			</div>
-			<div id="s">
+			<div id="s" onclick="buildS()">
 				<h3>Sulfur</h3>
-				<h4>count:</h4>
-				<h4 id="sNum"></h4>
+				<h3 id="sNum"></h3>
 				<h4>5.325 × 10^-26 kg</h4>
 				<h4>recipe: si + he -> s /
 					o + o -> s</h4>
 			</div>
-			<div id="ar">
+			<div id="ar" onclick="buildAr()">
 				<h3>Argon</h3>
-				<h4>count:</h4>
-				<h4 id="arNum"></h4>
+				<h3 id="arNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: s + he -> ar</h4>
 			</div>
-			<div id="ca">
+			<div id="ca" onclick="buildCa()">
 				<h3>Calcium</h3>
-				<h4>count:</h4>
-				<h4 id="caNum"></h4>
+				<h3 id="caNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: ar + he -> ca</h4>
 			</div>
-			<div id="ti">
+			<div id="ti" onclick="buildTi()">
 				<h3>Titanium</h3>
-				<h4>count:</h4>
-				<h4 id="tiNum"></h4>
+				<h3 id="tiNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: ca + he -> ti</h4>
 			</div>
-			<div id="cr">
+			<div id="cr" onclick="buildCr()">
 				<h3>Chromium</h3>
-				<h4>count:</h4>
-				<h4 id="crNum"></h4>
+				<h3 id="crNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: ti + he -> cr</h4>
 			</div>
-			<div id="fe">
+			<div id="fe" onclick="buildFe()">
 				<h3>Iron</h3>
-				<h4>count:</h4>
-				<h4 id="feNum"></h4>
+				<h3 id="feNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: cr + he -> fe /
 					si + si -> fe</h4>
 			</div>
-			<div id="ni">
+			<div id="ni" onclick="buildNi()">
 				<h3>Nickel</h3>
-				<h4>count:</h4>
-				<h4 id="niNum"></h4>
+				<h3 id="niNum"></h3>
 				<h4>2.657 × 10^-26 kg</h4>
 				<h4>recipe: fe + he -> ni</h4>
-			</div>:w
-			
+			</div>
 		</div>
+			<h2 id="timer" class="hide">60</h2>
 		<script type="text/javascript" src="script.js"></script>
 	</body>
 	

@@ -19,13 +19,15 @@ let x = 50;
 let y = 50;
 let bun = document.createElement("IMG");
 bun.setAttribute("src", "bun1.png");
+let clock = document.getElementById("timer");
 
+let play = true;
 /* Button actions */
 function start() {
 	button.setAttribute("class", "hide");
 	menuButton.setAttribute("class", "");
+	clock.setAttribute("class", "");
 	ctx.drawImage(bun, x, y);
-	
 	document.addEventListener('keypress', evt => {
 		if (evt.key === "s") {
 			ctx.clearRect(x, y, 40, 40);
@@ -49,18 +51,22 @@ function start() {
 }
 
 function openMenu() {
+	updateCounts();
 	menu.setAttribute("class", "");
 	tiles.setAttribute("class", "");
 	menuButton.setAttribute("class", "hide");
+	clock.setAttribute("class", "hide");
+	play = false;
 }
 
 function closeMenu() {
 	tiles.setAttribute("class", "hide");
 	menu.setAttribute("class", "hide");
 	menuButton.setAttribute("class", "");
+	clock.setAttribute("class", "");
+	play = true;
+	run();
 }
-
-
 
 /* new particles */
 let e = new Image();
@@ -111,19 +117,23 @@ let particles = [];
 for (let i = 0; i < numParticles; i++) {
 	particles.push(new Particle());
 }
-
-let requestFrame;
-function run(timestamp) {
-	for (let i = 0; i < particles.length; i++) {
-		particles[i].update();
+let time = 60;
+function run() {
+	if (play) {
+		for (let i = 0; i < particles.length; i++) {
+			particles[i].update();
+		}
+		detectAnnihilation();
+		detectCollection();
+		ctx.drawImage(bun, x, y);
+		time -= (1/60);
+		clock.innerHTML = Math.floor(time);
+		requestAnimationFrame(run);
 	}
-	detectAnnihilation();
-	detectCollection();
-	ctx.drawImage(bun, x, y);
-	requestFrame = requestAnimationFrame(run);
 }
 
 /* bun bank */
+let bunBank = [];
 let eNum = 0;
 let upNum = 0;
 let downNum = 0;
@@ -135,9 +145,16 @@ let oNum = 0;
 let cNum = 0;
 let neNum = 0;
 let naNum = 0;
-let mNum = 0;
+let mgNum = 0;
 let sNum = 0;
 let siNum = 0;
+let niNum = 0;
+let phNum = 0;
+let arNum = 0;
+let caNum = 0;
+let tiNum = 0;
+let crNum = 0;
+let feNum = 0;
 
 /* annihilation */
 function detectAnnihilation() {
@@ -185,23 +202,395 @@ function detectCollection() {
 		ctx.clearRect(toDelete[i].x, toDelete[i].y, 10, 10);
 		if (toDelete[i].type === 0) {
 			eNum++;
-			console.log("electron!"+ eNum);
 		} else if (toDelete[i].type === 1) {
 			eNum--;
-			console.log("positron!" + eNum);
 		} else if (toDelete[i].type === 2) {
 			upNum++;
-			console.log("up quark!"+upNum);
 		} else if (toDelete[i].type === 3) {
 			upNum--;
-			console.log("antiup!"+upNum);
 		} else if (toDelete[i].type === 4) {
 			downNum++;
-			console.log("down quark"+downNum);
 		} else {
 			downNum--;
-			console.log("antidown"+downNum);
 		}
 		particles.splice(particles.indexOf(toDelete[i]),1);
+	}
+}
+
+/* check bun bank to see what can be built */
+function canBuildP() {
+	if (upNum >= 2 && downNum >= 1) {
+		return true;
+	}  
+	return false;
+}
+
+function canBuildN() {
+	if (upNum >= 1 && downNum >= 2) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildH() {
+	if (proNum > 0 && neuNum > 0) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildHe() {
+	if (hNum >= 4) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildC() {
+	if (heNum >= 3) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildO() {
+	if (cNum > 0 && heNum > 0) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildNe() {
+	if (oNum > 0 && heNum > 0) {
+		return 1;
+	} else if (cNum >= 2) {
+		return 2;
+	}
+	return false;
+}
+
+function canBuildNa() {
+	if (cNum > 2) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildMg() {
+	if (neNum > 0 && heNum > 0) {
+		return 1;
+	} else if (oNum >= 2) {
+		return 2;
+	} else if (cNum >= 2) {
+		return 3;
+	}
+	return false;
+}
+
+function canBuildSi() {
+	if (mgNum > 0 && heNum > 0) {
+		return 1;
+	} else if (cNum > 0 && oNum > 0) {
+		return 2;
+	}
+	return false;
+}
+
+function canBuildPh() {
+	if (oNum >= 2) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildS() {
+	if (siNum > 0 && heNum > 0) {
+		return 1;
+	} else if (oNum >= 2) {
+		return 2;
+	} 
+	return false;
+}
+
+function canBuildAr() {
+	if (sNum > 0 && heNum > 0) {
+		return true;
+	} 
+	return false;
+}
+
+function canBuildCa() {
+	if (arNum > 0 && heNum > 0) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildTi() {
+	if (caNum > 0 && heNum > 0) {
+		return true;
+	}
+	return false;
+}
+
+function canBuildCr() {
+	if (tiNum > 0 && heNum > 0) {
+		return true;
+	} 
+	return false;
+}
+
+function canBuildFe() {
+	if (crNum > 0 && heNum > 0) {
+		return 1;
+	} else if (siNum >= 2) {
+		return 2;
+	}
+	return false;
+}
+
+function canBuildNi() {
+	if (feNum > 0 && heNum > 0) {
+		return true;
+	}
+	return false;
+}
+
+/* changing the counts on screen */
+function updateCounts() {
+	document.getElementById("eNum").innerHTML = eNum;
+	if (eNum < 1) {
+		document.getElementById("e").setAttribute("class", "hide");
+	} else {
+		document.getElementById("e").setAttribute("class", "");
+	}
+	document.getElementById("upNum").innerHTML = upNum;
+	if (upNum < 1) {
+		document.getElementById("up").setAttribute("class", "hide");
+	} else {
+		document.getElementById("up").setAttribute("class", "");
+	}
+	document.getElementById("downNum").innerHTML = downNum;
+	if (downNum < 1) {
+		document.getElementById("down").setAttribute("class", "hide");
+	} else {
+		document.getElementById("down").setAttribute("class", "");
+	}
+	pro = document.getElementById("p");
+	document.getElementById("pNum").innerHTML = proNum;
+	if (pNum < 1 && !canBuildP()) {
+		pro.setAttribute("class", "hide");
+	} else if (canBuildP()){
+		pro.onmouseover = function() {
+    		this.style.backgroundColor = "blue";
+		}
+	} else {
+		pro.onmouseover = function() 
+		{
+			this.style.backgroundColor = "yellow";
+		}
+	}
+
+	document.getElementById("neuNum").innerHTML = neuNum;
+	document.getElementById("hNum").innerHTML = hNum;
+	document.getElementById("heNum").innerHTML = heNum;
+	document.getElementById("oNum").innerHTML = oNum;
+	document.getElementById("cNum").innerHTML = cNum;
+	document.getElementById("neNum").innerHTML = neNum;
+	document.getElementById("naNum").innerHTML = naNum;
+	document.getElementById("mgNum").innerHTML = mgNum;
+	document.getElementById("sNum").innerHTML = sNum;
+	document.getElementById("siNum").innerHTML = siNum;
+	document.getElementById("niNum").innerHTML = niNum;
+	document.getElementById("phNum").innerHTML = phNum;
+	document.getElementById("arNum").innerHTML = arNum;
+	document.getElementById("caNum").innerHTML = caNum;
+	document.getElementById("tiNum").innerHTML = tiNum;
+	document.getElementById("crNum").innerHTML = crNum;
+	document.getElementById("feNum").innerHTML = feNum;
+}
+
+/*all the build functions!!*/
+function buildp() {
+	if (canBuildP()) {
+		proNum++;
+		upNum -= 2;
+		downNum--;
+		updateCounts();
+	}
+}
+
+function buildN() {
+	if(canBuildN()) {
+		neuNum++;
+		upNum++;
+		downNum -= 2;
+		updateCounts();
+	}
+}
+
+function buildH() {
+	if(canBuildH()) {
+		hNum++;
+		
+	}
+}
+
+function buildHe() {
+	if(canBuildHe()) {
+		heNum++;
+		hNum -= 2;
+		updateCounts();
+	}
+}
+
+function buildC() {
+	if (canBuildC()) {
+		cNum++;
+		heNum -= 3;
+		updateCounts();
+	}
+}
+
+function buildO() {
+	if (canBuildO()) {
+		oNum++;
+		heNum--;
+		cNum--;
+		updateCounts();
+	}
+}
+
+function buildNe() {
+	if (canBuildNe() === 1) {
+		neNum++;
+		heNum--;
+		oNum--;
+		updateCounts();
+	} else if (canBuildNe() === 2) {
+		neNum++;
+		cNum -= 2;
+		updateCounts();
+	} 
+}
+
+function buildNa() {
+	if (canBuildNa()) {
+		naNum++;
+		hNum++;
+		cNum -= 2;
+		updateCounts();
+	}
+}
+
+function buildMg() {
+	if (canBuildMg() === 1) {
+		mgNum++;
+		he--;
+		neNum--;
+		updateCounts();
+	} else if (canBuildMg() === 2) {
+		mgNum++;
+		oNum -= 2;
+		heNum += 2;
+		updateCounts();
+	} else if (canBuildMg() === 3) {
+		mgNum++;
+		cNum -= 2;
+		updateCounts();
+	}
+}
+
+function buildSi() {
+	if (canBuildSi() === 1) {
+		siNum++;
+		heNum--;
+		mgNum--;
+		updateCounts();
+	} else if (canBuildSi() === 2) {
+		siNum++;
+		cNum--;
+		oNum--;
+		updateCounts();
+	}
+}
+
+function buildPh() {
+	if (canBuildPh()) {
+		phNum++;
+		oNum -= 2;
+		hNum++;
+		updateCounts();
+	}
+}
+
+function buildS() {
+	if (canBuildS() === 1) {
+		sNum++;
+		heNum--;
+		siNum--;
+		updateCounts();
+	} else if (canBuildS() === 2) {
+		sNum++;
+		oNum -= 2;
+		updateCounts();
+	}
+}
+
+function buildAr() {
+	if (canBuildAr()) {
+		arNum++;
+		sNum--;
+		heNum--;
+		updateCounts();
+	}
+}
+
+function buildCa() {
+	if (canBuildCa()) {
+		caNum++;
+		arNum--;
+		heNum--;
+		updateCounts();
+	}
+}
+
+function buildTi() {
+	if (canBuildTi()) {
+		tiNum++;
+		caNum--;
+		heNum--;
+		updateCounts();
+	}
+}
+
+function buildCr() {
+	if (canBuildCr()) {
+		crNum++;
+		tiNum--;
+		heNum--;
+		updateCounts();
+	}
+}
+
+function buildFe() {
+	if (canBuildFe() === 1) {
+		feNum++;
+		heNum--;
+		crNum--;
+		updateCounts();
+	} else if (canBuildFe() === 2) {
+		feNum++;
+		siNum -= 2;
+		updateCounts();
+	}
+}
+
+function buildNi() {
+	if (canBuildNi()) {
+		niNum++;
+		feNum--;
+		heNum--;
+		updateCounts();
 	}
 }

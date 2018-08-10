@@ -63,7 +63,7 @@ p {
 	font-family: "Thrones", garamond, serif;
 }
 
-h3, h4 {
+h3, h4, h5 {
 	margin: 0px;
 	padding: 0px;
 }
@@ -134,3 +134,8 @@ button:hover {
 	color: #B4B4B4;
 }
 
+#timer {
+	position: relative;
+	left: 700px;
+	top: -1500px;
+}
